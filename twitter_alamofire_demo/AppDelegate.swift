@@ -18,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // MARK: TODO: Check for logged in user
         
+        
+        //MARK: Set an observer on log out
+        NotificationCenter.default.addObserver(forName: Notification.Name("didLogout"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("Logout notification received")
+            //Load and show the login view controller
+            let storyboard = UIStoryboard(name: "Main", bundle: nil) //get main storyboard
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            self.window?.rootViewController = loginViewController
+        }
+        if (User.current != nil) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationViewContoller = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+            self.window?.rootViewController = navigationViewContoller
+        }
+        
         return true
     }
     

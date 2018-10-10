@@ -8,28 +8,56 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController {
+class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tweetTableView: UITableView!
+    
+    var tweets: [Tweet]! = []
+    
+    
+    @IBAction func didTapLogout(_ sender: Any) {
+        APIManager.shared.logout()
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let refreshControl = UIRefreshControl()
+        
+        tweetTableView.rowHeight = 140
+        tweetTableView.dataSource = self
+        tweetTableView.delegate = self
+        
+        self.completeNetworkRequest()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        tweetTableView.insertSubview(refreshControl, at: 0)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tweets.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        cell.tweet = tweets[indexPath.row]
+        return cell
+    }
+    
+    func completeNetworkRequest() {
+        APIManager.shared.getHomeTimeLine { (tweet, Error) in
+            self.tweets = tweet
+            print(self.tweets)
+        }
+    }
+    
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        completeNetworkRequest()
+        refreshControl.endRefreshing()
+    }
+    
 }
