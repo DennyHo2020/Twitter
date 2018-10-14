@@ -19,15 +19,14 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         APIManager.shared.logout()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let refreshControl = UIRefreshControl()
-        
-        tweetTableView.rowHeight = 140
         tweetTableView.dataSource = self
-        tweetTableView.delegate = self
+        tweetTableView.rowHeight = 250
+        tweetTableView.estimatedRowHeight = 200
+
+        
         
         self.completeNetworkRequest()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
