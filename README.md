@@ -38,7 +38,9 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-![flix](https://user-images.githubusercontent.com/31720526/46913114-1e693980-cf3c-11e8-8b1c-799471c3992d.gif)
+
+![twitter](https://user-images.githubusercontent.com/31720526/46913126-612b1180-cf3c-11e8-95f9-e7667c433a3c.gif)
+
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
