@@ -33,6 +33,16 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         tweetTableView.insertSubview(refreshControl, at: 0)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        if let indexPath = tweetTableView.indexPath(for: cell) {
+            let tweet = tweets[indexPath.row]
+            let detailViewController = segue.destination as! DetailsViewController
+            detailViewController.tweet = tweet
+            
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

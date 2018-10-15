@@ -12,13 +12,13 @@ class Tweet {
     
     // MARK: Properties
     var id: Int64? // For favoriting, retweeting & replying
-    var text: String // Text content of tweet
+    var text: String! // Text content of tweet
     var favoriteCount: Int? // Update favorite count label
     var favorited: Bool? // Configure favorite button
     var retweetCount: Int // Update favorite count label
     var retweeted: Bool // Configure retweet button
-    var user: User // Contains name, screenname, etc. of tweet author
-    var createdAtString: String // Display date
+    var user: User! // Contains name, screenname, etc. of tweet author
+    var createdAtString: String? // Display date
     
     // MARK: - Create initializer with dictionary
     init(dictionary: [String: Any]) {

@@ -30,8 +30,8 @@ class TweetCell: UITableViewCell {
         didSet{
             tweetTextLabel.text = tweet?.text
             dateLabel.text = tweet?.createdAtString
-            retweetButton.setTitle("\(tweet?.retweetCount)", for: .normal)
-            favoriteButton.setTitle("\(tweet?.favoriteCount)", for: .normal)
+            retweetButton.setTitle("\(tweet!.retweetCount)", for: .normal)
+            favoriteButton.setTitle("\(tweet!.favoriteCount!)", for: .normal)
             usernameLabel.text = tweet?.user.name
             handleLabel.text = "@" + (tweet?.user.screenName)!
             profilePic = tweet?.user.profilepic
