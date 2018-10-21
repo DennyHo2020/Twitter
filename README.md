@@ -37,7 +37,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here's a walkthrough of implemented user stories:
 
 
-
+![twitter](https://user-images.githubusercontent.com/31720526/47262850-fdf32f00-d4a7-11e8-8302-88d7bb46e55f.gif)
 
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
