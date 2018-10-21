@@ -8,37 +8,66 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate {
+    
+    func did(post: Tweet) {
+        updateUserInformation()
+        completeNetworkRequest()
+    }
+    
     @IBOutlet weak var tweetTableView: UITableView!
     
     var tweets: [Tweet]! = []
+    var refreshControl: UIRefreshControl!
+
     
     
     @IBAction func didTapLogout(_ sender: Any) {
         APIManager.shared.logout()
     }
     
+    @IBAction func didTapCompose(_ sender: Any) {
+        self.performSegue(withIdentifier: "ComposeSegue", sender: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let refreshControl = UIRefreshControl()
+        self.updateUserInformation()
         tweetTableView.dataSource = self
-        tweetTableView.rowHeight = 250
+        tweetTableView.rowHeight = 150
         tweetTableView.estimatedRowHeight = 200
-
         
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(TimelineViewController.completeNetworkRequest), for: .valueChanged)
+        tweetTableView.insertSubview(refreshControl, at: 0)
         
         self.completeNetworkRequest()
-        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
-        tweetTableView.insertSubview(refreshControl, at: 0)
+
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        if let indexPath = tweetTableView.indexPath(for: cell) {
-            let tweet = tweets[indexPath.row]
-            let detailViewController = segue.destination as! DetailsViewController
-            detailViewController.tweet = tweet
+        self.updateUserInformation()
+        if (segue.identifier == "DetailSegue") {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tweetTableView.indexPath(for: cell) {
+                let tweet = tweets[indexPath.row]
+                let detailViewController = segue.destination as! DetailsViewController
+                detailViewController.tweet = tweet
+                
+            }
+        }
+        if (segue.identifier == "ComposeSegue") {
+            if let composeView = segue.destination as? ComposeViewController {
+                composeView.delegate = self 
+                composeView.user = User.current
+            }
+        }
+        if (segue.identifier == "ProfileSegue") {
+            if let profileView = segue.destination as? ProfileViewController {
+                profileView.user = User.current
+            }
             
         }
     }
@@ -48,7 +77,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tweets.count
+        return tweets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,6 +90,11 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         APIManager.shared.getHomeTimeLine { (tweet, Error) in
             self.tweets = tweet
             print(self.tweets)
+        }
+    }
+    func updateUserInformation() {
+        APIManager.shared.getCurrentAccount { (user, error) in
+            User.current = user
         }
     }
     

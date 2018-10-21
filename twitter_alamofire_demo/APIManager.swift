@@ -15,8 +15,8 @@ import KeychainAccess
 class APIManager: SessionManager {
     
     // MARK: TODO: Add App Keys
-    static let consumerKey = "2hozF8iQkrh2KjOhC2fR5rQfV"
-    static let consumerSecret = "NObHSI8CLh1ih6sEjki1v3x43jfIpdLajYswksqDeUZJO3EXsI"
+    static let consumerKey = "ads6TDMp3Z9r0Lvg0IPmvh2Yx"
+    static let consumerSecret = "OgERDZT6g7G3kjrX1vnrZw276edPy4G7Ar8oWecnpq8xiwY42T"
 
     static let requestTokenURL = "https://api.twitter.com/oauth/request_token"
     static let authorizeURL = "https://api.twitter.com/oauth/authorize"
@@ -157,6 +157,17 @@ class APIManager: SessionManager {
     // MARK: TODO: Un-Retweet
     
     // MARK: TODO: Compose Tweet
+    func composeTweet(with text: String, completion: @escaping (Tweet?, Error?) -> ()) {
+        let urlString = "https://api.twitter.com/1.1/statuses/update.json"
+        let parameters = ["status": text]
+        oauthManager.client.post(urlString, parameters: parameters, headers: nil, body: nil, success: { (response: OAuthSwiftResponse) in
+            let tweetDictionary = try! response.jsonObject() as! [String: Any]
+            let tweet = Tweet(dictionary: tweetDictionary)
+            completion(tweet, nil)
+        }) { (error: OAuthSwiftError) in
+            completion(nil, error.underlyingError)
+        }
+    }
     
     // MARK: TODO: Get User Timeline
     

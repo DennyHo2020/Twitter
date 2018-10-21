@@ -11,6 +11,8 @@
 		3D217BEE216BFA02004C30E2 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D217BED216BFA02004C30E2 /* Tweet.swift */; };
 		3D217BF0216C0825004C30E2 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D217BEF216C0825004C30E2 /* TweetCell.swift */; };
 		3D217C00217539DD004C30E2 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D217BFF217539DD004C30E2 /* DetailsViewController.swift */; };
+		3D217C022175403B004C30E2 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D217C012175403B004C30E2 /* ComposeViewController.swift */; };
+		3D217C06217C25A7004C30E2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D217C05217C25A7004C30E2 /* ProfileViewController.swift */; };
 		547221C96829E6F537FCE2FE /* Pods_twitter_alamofire_demoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCA05DC47A45B9943F23F5F /* Pods_twitter_alamofire_demoUITests.framework */; };
 		6C028F67F4B75B9CE911AB20 /* Pods_twitter_alamofire_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001F2EB27736B82E6AF0082B /* Pods_twitter_alamofire_demo.framework */; };
 		BEBC8368211F4199003A5FE1 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBC8367211F4199003A5FE1 /* TimelineViewController.swift */; };
@@ -48,6 +50,8 @@
 		3D217BED216BFA02004C30E2 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		3D217BEF216C0825004C30E2 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		3D217BFF217539DD004C30E2 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		3D217C012175403B004C30E2 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		3D217C05217C25A7004C30E2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3FCA05DC47A45B9943F23F5F /* Pods_twitter_alamofire_demoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_twitter_alamofire_demoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		434659329CA4ED45495F750D /* Pods-twitter_alamofire_demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter_alamofire_demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter_alamofire_demo/Pods-twitter_alamofire_demo.debug.xcconfig"; sourceTree = "<group>"; };
 		4DFA54CBFE40EC0C9E20906F /* Pods-twitter_alamofire_demoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter_alamofire_demoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-twitter_alamofire_demoTests/Pods-twitter_alamofire_demoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				BEBC8367211F4199003A5FE1 /* TimelineViewController.swift */,
 				3D217BFF217539DD004C30E2 /* DetailsViewController.swift */,
 				ED1AFD601E94496E00FD4B90 /* LoginViewController.swift */,
+				3D217C012175403B004C30E2 /* ComposeViewController.swift */,
+				3D217C05217C25A7004C30E2 /* ProfileViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -435,7 +441,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D217C022175403B004C30E2 /* ComposeViewController.swift in Sources */,
 				ED1AFD611E94496E00FD4B90 /* LoginViewController.swift in Sources */,
+				3D217C06217C25A7004C30E2 /* ProfileViewController.swift in Sources */,
 				3D217BF0216C0825004C30E2 /* TweetCell.swift in Sources */,
 				BEBC8368211F4199003A5FE1 /* TimelineViewController.swift in Sources */,
 				3D217C00217539DD004C30E2 /* DetailsViewController.swift in Sources */,

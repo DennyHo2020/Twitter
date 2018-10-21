@@ -17,7 +17,7 @@ class Tweet {
     var favorited: Bool? // Configure favorite button
     var retweetCount: Int // Update favorite count label
     var retweeted: Bool // Configure retweet button
-    var user: User! // Contains name, screenname, etc. of tweet author
+    var user: User // Contains name, screenname, etc. of tweet author
     var createdAtString: String? // Display date
     
     // MARK: - Create initializer with dictionary

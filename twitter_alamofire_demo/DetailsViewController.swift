@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class DetailsViewController: UIViewController {
     
@@ -19,41 +20,40 @@ class DetailsViewController: UIViewController {
     
     var profilePic: URL?
 
-    var tweet: Tweet? {
-        didSet{
-            tweetLabel.text = tweet?.text
-            dateLabel.text = tweet?.createdAtString
-            retweetButton.setTitle("\(tweet!.retweetCount)", for: .normal)
-            favoriteLabel.setTitle("\(tweet!.favoriteCount!)", for: .normal)
-            usernameLabel.text = tweet?.user.name
-            handleLabel.text = "@" + (tweet?.user.screenName)!
-            profilePic = tweet?.user.profilepic
+    var tweet: Tweet?
+//        didSet{
+//            tweetLabel.text = tweet?.text
+//            dateLabel.text = tweet?.createdAtString
+//            retweetButton.setTitle("\(tweet!.retweetCount)", for: .normal)
+//            favoriteLabel.setTitle("\(tweet!.favoriteCount!)", for: .normal)
+//            usernameLabel.text = tweet?.user.name
+//            handleLabel.text = "@" + (tweet?.user.screenName)!
+//            profilePic = tweet?.user.profilepic
+//            userImageView.af_setImage(withURL: profilePic!)
+//
+//        }
+    
+    func updateUserInformation() {
+        if let tweet = self.tweet {
+            tweetLabel.text = tweet.text
+            dateLabel.text = tweet.createdAtString
+            retweetButton.setTitle("\(tweet.retweetCount)", for: .normal)
+            favoriteLabel.setTitle("\(tweet.favoriteCount!)", for: .normal)
+            usernameLabel.text = tweet.user.name
+            handleLabel.text = "@" + (tweet.user.screenName)!
+            profilePic = tweet.user.profilepic
             userImageView.af_setImage(withURL: profilePic!)
-            
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        updateUserInformation()
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
