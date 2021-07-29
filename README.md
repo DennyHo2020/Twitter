@@ -10,14 +10,14 @@ Base Features & Functionality
 - Compose a new tweet by tapping on a compose button.
 - When composing a tweet, user sees a countdown for the number of characters remaining for the tweet (out of 140)
 - Can view profile in a profile tab
-- [X] User sees app icon in home screen and styled launch screen. (1pt)
-- [X] User can sign in using OAuth login flow. (1pt)
-- [X] User can Logout. (1pt)
-- [X] Create Data Models for User and Tweet. (1pt)
-- [X] User can view last 20 tweets from their home timeline with the user profile picture, username, tweet text, and timestamp. (2pts)
-- [X] User can pull to refresh. (1pt)
-- [X] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet. (2pts)
-- [X] The current signed in user will be persisted across restarts. (1pt)
+- User sees app icon in home screen and styled launch screen.
+- User can sign in using OAuth login flow.
+- User can Logout.
+- Create Data Models for User and Tweet.
+- User can view last 20 tweets from their home timeline with the user profile picture, username, tweet text, and timestamp.
+- User can pull to refresh.
+- User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet.
+- The current signed in user will be persisted across restarts.
 
 
 ## Video Walkthrough
